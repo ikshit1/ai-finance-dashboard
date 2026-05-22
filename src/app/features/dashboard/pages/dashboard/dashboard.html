@@ -1,11 +1,35 @@
-<app-navbar />
-
 <div class="dashboard-layout">
-  <app-sidebar />
+  <app-sidebar></app-sidebar>
 
   <div class="dashboard-content">
-    <app-dashboard-card />
-    <app-chart-widget />
-    <app-transactions-table />
+    <app-navbar></app-navbar>
+
+    <div class="dashboard-body">
+      <div class="cards-grid">
+        <div class="dashboard-card">
+          <h3>Total Balance</h3>
+          <p>₹1,20,000</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Income</h3>
+          <p>₹80,000</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Expenses</h3>
+          <p>₹35,000</p>
+        </div>
+
+        <div class="dashboard-card">
+          <h3>Savings</h3>
+          <p>₹45,000</p>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        Charts Section
+      </div>
+    </div>
   </div>
 </div>

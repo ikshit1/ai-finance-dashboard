@@ -1,0 +1,43 @@
+.navbar {
+  height: 70px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid #e5e7eb;
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .notification-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: #f3f4f6;
+      font-size: 18px;
+    }
+
+    .profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+  }
+}
