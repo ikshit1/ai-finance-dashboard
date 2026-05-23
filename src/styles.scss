@@ -1,3 +1,7 @@
 @use './styles/base/reset';
 @use './styles/layout/layout';
 @use './styles/themes/theme';
+
+body {
+  font-family: 'Inter', sans-serif;
+}

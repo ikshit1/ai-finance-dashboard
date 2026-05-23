@@ -17,9 +17,16 @@
         <td>{{ transaction.type }}</td>
         <td>{{ transaction.amount }}</td>
         <td>
-          <span class="status">
-            {{ transaction.status }}
-          </span>
+            <span
+                class="status"
+                [ngClass]="{
+                'completed': transaction.status === 'Completed',
+                'pending': transaction.status === 'Pending',
+                'received': transaction.status === 'Received'
+                }"
+            >
+                {{ transaction.status }}
+            </span>
         </td>
       </tr>
     </tbody>

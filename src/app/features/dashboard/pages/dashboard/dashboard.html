@@ -1,8 +1,16 @@
 <div class="dashboard-layout">
-  <app-sidebar></app-sidebar>
+  <app-sidebar
+    [class.mobile-open]="isSidebarOpen">
+  </app-sidebar>
+
+  <div
+    class="overlay"
+    *ngIf="isSidebarOpen"
+    (click)="toggleSidebar()">
+    </div>
 
   <div class="dashboard-content">
-    <app-navbar></app-navbar>
+    <app-navbar (menuClick)="toggleSidebar()"></app-navbar>
 
     <div class="dashboard-body">
       <div class="cards-grid">
