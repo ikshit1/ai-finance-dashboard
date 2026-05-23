@@ -1,13 +1,13 @@
 <div class="dashboard-layout">
   <app-sidebar
-    [class.mobile-open]="isSidebarOpen">
+    [ngClass]="{ 'mobile-open': isSidebarOpen }">
   </app-sidebar>
 
   <div
     class="overlay"
-    *ngIf="isSidebarOpen"
+    [ngClass]="{ 'visible': isSidebarOpen }"
     (click)="toggleSidebar()">
-    </div>
+  </div>
 
   <div class="dashboard-content">
     <app-navbar (menuClick)="toggleSidebar()"></app-navbar>
@@ -20,8 +20,8 @@
         </app-dashboard-card>
 
         <app-dashboard-card
-        title="Income"
-        amount="₹80,000">
+          title="Income"
+          amount="₹80,000">
         </app-dashboard-card>
 
         <app-dashboard-card
@@ -33,6 +33,10 @@
           title="Savings"
           amount="₹45,000">
         </app-dashboard-card>
+      </div>
+
+      <div class="chart-section">
+        <app-chart-widget></app-chart-widget>
       </div>
 
       <div class="chart-section">
