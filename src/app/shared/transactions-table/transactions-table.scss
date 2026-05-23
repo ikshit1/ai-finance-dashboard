@@ -1,0 +1,27 @@
+.table-container {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+td {
+  color: #111827;
+}

@@ -6,29 +6,29 @@
 
     <div class="dashboard-body">
       <div class="cards-grid">
-        <div class="dashboard-card">
-          <h3>Total Balance</h3>
-          <p>₹1,20,000</p>
-        </div>
+        <app-dashboard-card
+          title="Total Balance"
+          amount="₹1,20,000">
+        </app-dashboard-card>
 
-        <div class="dashboard-card">
-          <h3>Income</h3>
-          <p>₹80,000</p>
-        </div>
+        <app-dashboard-card
+        title="Income"
+        amount="₹80,000">
+        </app-dashboard-card>
 
-        <div class="dashboard-card">
-          <h3>Expenses</h3>
-          <p>₹35,000</p>
-        </div>
+        <app-dashboard-card
+          title="Expenses"
+          amount="₹35,000">
+        </app-dashboard-card>
 
-        <div class="dashboard-card">
-          <h3>Savings</h3>
-          <p>₹45,000</p>
-        </div>
+        <app-dashboard-card
+          title="Savings"
+          amount="₹45,000">
+        </app-dashboard-card>
       </div>
 
       <div class="chart-section">
-        Charts Section
+        <app-transactions-table></app-transactions-table>
       </div>
     </div>
   </div>

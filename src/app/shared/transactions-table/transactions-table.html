@@ -1,1 +1,27 @@
-<p>transactions-table works!</p>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.category }}</td>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>
+          <span class="status">
+            {{ transaction.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

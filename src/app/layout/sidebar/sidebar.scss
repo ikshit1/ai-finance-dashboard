@@ -21,6 +21,9 @@
       margin-bottom: 10px;
       cursor: pointer;
       transition: 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
       &:hover {
         background: #1f2937;

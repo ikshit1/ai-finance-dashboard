@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-card',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard-card.html',
   styleUrl: './dashboard-card.scss',
 })
-export class DashboardCard {}
+export class DashboardCard {
+  @Input() title: string = '';
+  @Input() amount: string = '';
+}
