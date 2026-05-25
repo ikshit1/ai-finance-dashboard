@@ -1,47 +1,31 @@
-<div class="dashboard-layout">
-  <app-sidebar
-    [ngClass]="{ 'mobile-open': isSidebarOpen }">
-  </app-sidebar>
-
-  <div
-    class="overlay"
-    [ngClass]="{ 'visible': isSidebarOpen }"
-    (click)="toggleSidebar()">
-  </div>
-
-  <div class="dashboard-content">
-    <app-navbar (menuClick)="toggleSidebar()"></app-navbar>
-
-    <div class="dashboard-body">
+<div class="dashboard-body">
       <div class="cards-grid">
         <app-dashboard-card
-          title="Total Balance"
-          amount="₹1,20,000">
+            title="Total Balance"
+            amount="₹1,20,000"
+            icon="account_balance_wallet">
         </app-dashboard-card>
 
         <app-dashboard-card
-          title="Income"
-          amount="₹80,000">
+            title="Income"
+            amount="₹80,000"
+            icon="payments">
         </app-dashboard-card>
 
         <app-dashboard-card
-          title="Expenses"
-          amount="₹35,000">
+            title="Expenses"
+            amount="₹35,000"
+            icon="trending_down">
         </app-dashboard-card>
 
         <app-dashboard-card
-          title="Savings"
-          amount="₹45,000">
+            title="Savings"
+            amount="₹45,000"
+            icon="savings">
         </app-dashboard-card>
       </div>
 
       <div class="chart-section">
         <app-chart-widget></app-chart-widget>
       </div>
-
-      <div class="chart-section">
-        <app-transactions-table></app-transactions-table>
-      </div>
     </div>
-  </div>
-</div>

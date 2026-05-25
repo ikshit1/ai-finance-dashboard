@@ -1,1 +1,21 @@
-<p>content-wrapper works!</p>
+<div class="dashboard-layout">
+
+  <app-sidebar
+    [ngClass]="{ 'mobile-open': isSidebarOpen }">
+  </app-sidebar>
+
+  <div
+    class="overlay"
+    [ngClass]="{ 'visible': isSidebarOpen }"
+    (click)="toggleSidebar()">
+  </div>
+
+  <div class="dashboard-content">
+    <app-navbar></app-navbar>
+
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
