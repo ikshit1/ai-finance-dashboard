@@ -1,1 +1,74 @@
-<p>signup works!</p>
+<div class="auth-page">
+
+  <div class="bg-shapes">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="auth-card">
+
+    <div class="auth-icon">
+      👤
+    </div>
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">
+      Join us and start your finance journey
+    </p>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+
+      <div class="input-group">
+        <label>Name</label>
+
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Enter your name">
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Create password">
+      </div>
+
+      <button
+        type="submit"
+        class="btn-register">
+
+        Create Account
+
+      </button>
+
+    </form>
+
+    <div class="auth-footer">
+
+      Already have an account?
+
+      <a routerLink="/login">
+        Login
+      </a>
+
+    </div>
+
+  </div>
+
+</div>

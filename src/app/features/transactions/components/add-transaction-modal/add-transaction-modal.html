@@ -1,0 +1,59 @@
+<div class="modal-backdrop">
+
+  <div class="modal">
+
+    <div class="modal-header">
+      <h2>Add Transaction</h2>
+
+      <button (click)="close.emit()">
+        ✕
+      </button>
+    </div>
+
+    <form
+      [formGroup]="transactionForm"
+      (ngSubmit)="submit()">
+
+      <input
+        type="number"
+        placeholder="Amount"
+        formControlName="amount">
+
+      <input
+        type="text"
+        placeholder="Category"
+        formControlName="category">
+
+      <select formControlName="type">
+        <option value="Income">
+          Income
+        </option>
+
+        <option value="Expense">
+          Expense
+        </option>
+      </select>
+
+      <select formControlName="status">
+        <option value="Completed">
+          Completed
+        </option>
+
+        <option value="Pending">
+          Pending
+        </option>
+
+        <option value="Received">
+          Received
+        </option>
+      </select>
+
+      <button type="submit">
+        Save Transaction
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

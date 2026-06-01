@@ -66,6 +66,15 @@ td {
   }
 }
 
+.delete-btn {
+  border: none;
+  background: #ef4444;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .table-container {
     padding: 12px;

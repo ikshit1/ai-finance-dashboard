@@ -5,10 +5,27 @@ import { Transactions } from './features/transactions/pages/transactions/transac
 import { Analytics } from './features/analytics/pages/analytics/analytics';
 import { Settings } from './features/settings/pages/settings/settings';
 import { ContentWrapper } from './layout/content-wrapper/content-wrapper';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+    {
+    path: 'login',
+    loadComponent: () =>
+        import(
+        './features/auth/pages/login/login'
+        ).then(m => m.Login)
+    },
+
+    {
+    path: 'register',
+    loadComponent: () =>
+        import(
+        './features/auth/pages/signup/signup'
+        ).then(m => m.Signup)
+    },
    {
     path: '',
+    canActivate: [authGuard],
     component: ContentWrapper,
     children: [
         {

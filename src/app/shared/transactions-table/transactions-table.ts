@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-transactions-table',
@@ -10,4 +10,9 @@ import { Component, Input } from '@angular/core';
 })
 export class TransactionsTable {
   @Input() transactions: any[] = [];
+  @Output() delete = new EventEmitter<string>();
+
+  deleteTransaction(id: string): void {
+    this.delete.emit(id);
+  }
 }
