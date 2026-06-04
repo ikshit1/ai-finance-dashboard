@@ -1,27 +1,27 @@
 <div class="dashboard-body">
       <div class="cards-grid">
         <app-dashboard-card
-            title="Total Balance"
-            amount="₹1,20,000"
-            icon="account_balance_wallet">
+            title="Total Savings"
+            [amount]="'₹' +(analytics.totalSavings || 0)"
+            icon="savings">
         </app-dashboard-card>
 
         <app-dashboard-card
             title="Income"
-            amount="₹80,000"
+            [amount]="'₹' +(analytics.income || 0)"
             icon="payments">
         </app-dashboard-card>
 
         <app-dashboard-card
             title="Expenses"
-            amount="₹35,000"
+            [amount]="'₹' +(analytics.expense || 0)"
             icon="trending_down">
         </app-dashboard-card>
 
         <app-dashboard-card
-            title="Savings"
-            amount="₹45,000"
-            icon="savings">
+            title="Monthly Savings"
+            [amount]="'₹' +(analytics.monthlySavings || 0)"
+            icon="account_balance_wallet">
         </app-dashboard-card>
       </div>
 

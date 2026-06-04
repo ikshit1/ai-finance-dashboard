@@ -1,1 +1,88 @@
-<p>settings works!</p>
+<div class="settings-page">
+
+  <div class="settings-card">
+
+    <div class="settings-header">
+
+      <div class="settings-icon">
+        💰
+      </div>
+
+      <h1>Financial Profile</h1>
+
+      <p>
+        Configure your financial information to unlock AI insights,
+        financial health score, and debt prediction.
+      </p>
+
+    </div>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+
+      <div class="section-title">
+        Budget & Savings
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Monthly Budget
+        </label>
+
+        <input
+          type="number"
+          formControlName="monthlyBudget"
+          placeholder="50000">
+
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Total Savings
+        </label>
+
+        <input
+          type="number"
+          formControlName="totalSavings"
+          placeholder="180000">
+
+      </div>
+
+      <div class="section-title">
+        Income Information
+      </div>
+
+      <div class="input-group">
+
+        <label>
+          Monthly Salary
+        </label>
+
+        <input
+          type="number"
+          formControlName="monthlySalary"
+          placeholder="160000">
+
+      </div>
+
+      <button
+        type="submit"
+        class="save-btn"
+        [disabled]="loading">
+
+        {{
+          loading
+            ? 'Saving...'
+            : 'Save Profile'
+        }}
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
