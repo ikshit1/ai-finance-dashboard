@@ -1,0 +1,162 @@
+<div class="debt-page">
+
+  <div class="debt-card">
+
+    <h2>
+      Add EMI
+    </h2>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+
+      <select
+        formControlName="type">
+
+        <option value="">
+          Select Loan Type
+        </option>
+
+        <option>
+          Home Loan
+        </option>
+
+        <option>
+          Personal Loan
+        </option>
+
+        <option>
+          Car Loan
+        </option>
+
+        <option>
+          Education Loan
+        </option>
+
+        <option>
+          Credit Card EMI
+        </option>
+
+        <option>
+          Business Loan
+        </option>
+
+      </select>
+
+      <input
+        type="text"
+        formControlName="lender"
+        placeholder="Axis PL">
+
+      <input
+        type="number"
+        formControlName="emi"
+        placeholder="EMI">
+
+      <input
+        type="number"
+        formControlName="outstandingAmount"
+        placeholder="Outstanding Amount">
+
+      <input
+        type="number"
+        formControlName="interestRate"
+        placeholder="Interest Rate">
+
+      <button
+        type="submit">
+
+        Add Debt
+
+      </button>
+
+    </form>
+
+  </div>
+
+  <div class="table-card">
+
+    <h2>
+      Active Loans
+    </h2>
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            Type
+          </th>
+
+          <th>
+            Lender
+          </th>
+
+          <th>
+            EMI
+          </th>
+
+          <th>
+            Outstanding
+          </th>
+
+          <th>
+            Action
+          </th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr
+          *ngFor="
+            let debt
+            of debts
+          ">
+
+          <td>
+            {{ debt.type }}
+          </td>
+
+          <td>
+            {{ debt.lender }}
+          </td>
+
+          <td>
+            ₹{{ debt.emi }}
+          </td>
+
+          <td>
+            ₹{{
+              debt.outstandingAmount
+            }}
+          </td>
+
+          <td>
+
+            <button
+              (click)="
+                deleteDebt(
+                  debt._id!
+                )
+              ">
+
+              Delete
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

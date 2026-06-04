@@ -6,6 +6,7 @@ import { Analytics } from './features/analytics/pages/analytics/analytics';
 import { Settings } from './features/settings/pages/settings/settings';
 import { ContentWrapper } from './layout/content-wrapper/content-wrapper';
 import { authGuard } from './core/guards/auth.guard';
+import { Debts } from './features/debts/debts';
 
 export const routes: Routes = [
     {
@@ -15,7 +16,6 @@ export const routes: Routes = [
         './features/auth/pages/login/login'
         ).then(m => m.Login)
     },
-
     {
     path: 'register',
     loadComponent: () =>
@@ -53,6 +53,10 @@ export const routes: Routes = [
             path: 'settings',
             component: Settings,
         },
+        {
+            path: 'debts',
+            component: Debts,
+        }
     ]
    }
 ];
