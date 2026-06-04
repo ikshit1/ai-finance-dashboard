@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import {
@@ -31,47 +32,40 @@ import {
 export class Debts implements OnInit {
 
   debts: DebtInterface[] = [];
+  totalEmi = 0;
+  totalOutstanding = 0;
   form: FormGroup;
 
-  constructor(
-    private debtService: Debt,
-    private fb: FormBuilder
-  ) {
+  constructor(private debtService: Debt, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
 
     this.form =
       this.fb.group({
-
         type: [
           '',
           Validators.required
         ],
-
         lender: [
           '',
           Validators.required
         ],
-
         emi: [
           0,
           Validators.required
         ],
-
         outstandingAmount: [
-          0
+          0,
+          Validators.required
         ],
-
         interestRate: [
-          0
+          0,
+          Validators.required
         ]
-
       });
 
   }
 
   ngOnInit(): void {
-
     this.loadDebts();
-
   }
 
   loadDebts(): void {
@@ -79,16 +73,71 @@ export class Debts implements OnInit {
     this.debtService
       .getDebts()
       .subscribe({
-      next: (debts) => {
+        next: (
+          debts
+        ) => {
+
           this.debts = debts;
+          this.calculateSummary();
+          this.cdr.detectChanges();
+        },
+
+        error: (
+          error
+        ) => {
+
+          console.error(
+            error
+          );
+
         }
+
       });
+
+  }
+
+   calculateSummary(): void {
+
+    this.totalEmi =
+      this.debts.reduce(
+
+        (
+          sum,
+          debt
+        ) =>
+
+          sum +
+          debt.emi,
+
+        0
+
+      );
+
+    this.totalOutstanding =
+      this.debts.reduce(
+
+        (
+          sum,
+          debt
+        ) =>
+
+          sum +
+          debt.outstandingAmount,
+
+        0
+
+      );
+
   }
 
   onSubmit(): void {
 
-    if (this.form.invalid) {
+    if (
+      this.form.invalid
+    ) {
+
       return;
+
     }
 
     this.debtService
@@ -115,23 +164,61 @@ export class Debts implements OnInit {
 
           });
 
+        },
+
+        error: (
+          error
+        ) => {
+
+          console.error(
+            error
+          );
+
         }
 
       });
 
   }
 
-  deleteDebt(
+   deleteDebt(
     id: string
   ): void {
+
+    const confirmDelete =
+      confirm(
+        'Delete this loan?'
+      );
+
+    if (
+      !confirmDelete
+    ) {
+
+      return;
+
+    }
 
     this.debtService
       .deleteDebt(id)
       .subscribe({
+
         next: () => {
+
           this.loadDebts();
+
+        },
+
+        error: (
+          error
+        ) => {
+
+          console.error(
+            error
+          );
+
         }
+
       });
+
   }
 
 }

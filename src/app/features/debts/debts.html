@@ -1,72 +1,156 @@
 <div class="debt-page">
 
+  <div class="summary-grid">
+
+    <div class="summary-card">
+      <span class="summary-icon">💰</span>
+      <div>
+        <h4>Total EMI</h4>
+        <p>₹{{ totalEmi || 0 }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <span class="summary-icon">🏦</span>
+      <div>
+        <h4>Active Loans</h4>
+        <p>{{ debts.length }}</p>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <span class="summary-icon">📊</span>
+      <div>
+        <h4>Outstanding Debt</h4>
+        <p>₹{{ totalOutstanding || 0 }}</p>
+      </div>
+    </div>
+
+  </div>
+
   <div class="debt-card">
 
-    <h2>
-      Add EMI
-    </h2>
+    <div class="section-header">
+
+      <div>
+        <h2>Add EMI</h2>
+        <p>
+          Track and manage all your loan obligations.
+        </p>
+      </div>
+
+      <div class="header-icon">
+        💳
+      </div>
+
+    </div>
 
     <form
       [formGroup]="form"
       (ngSubmit)="onSubmit()">
 
-      <select
-        formControlName="type">
+      <div class="form-grid">
 
-        <option value="">
-          Select Loan Type
-        </option>
+        <div class="input-group">
 
-        <option>
-          Home Loan
-        </option>
+          <label>
+            Loan Type
+          </label>
 
-        <option>
-          Personal Loan
-        </option>
+          <select formControlName="type">
 
-        <option>
-          Car Loan
-        </option>
+            <option value="">
+              Select Loan Type
+            </option>
 
-        <option>
-          Education Loan
-        </option>
+            <option>
+              Home Loan
+            </option>
 
-        <option>
-          Credit Card EMI
-        </option>
+            <option>
+              Personal Loan
+            </option>
 
-        <option>
-          Business Loan
-        </option>
+            <option>
+              Car Loan
+            </option>
 
-      </select>
+            <option>
+              Education Loan
+            </option>
 
-      <input
-        type="text"
-        formControlName="lender"
-        placeholder="Axis PL">
+            <option>
+              Credit Card EMI
+            </option>
 
-      <input
-        type="number"
-        formControlName="emi"
-        placeholder="EMI">
+            <option>
+              Business Loan
+            </option>
 
-      <input
-        type="number"
-        formControlName="outstandingAmount"
-        placeholder="Outstanding Amount">
+            <option>
+              Other
+            </option>
 
-      <input
-        type="number"
-        formControlName="interestRate"
-        placeholder="Interest Rate">
+          </select>
+
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Lender / Bank / Tag
+          </label>
+
+          <input
+            type="text"
+            formControlName="lender"
+            placeholder="Axis PL">
+
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Monthly EMI (₹)
+          </label>
+
+          <input
+            type="number"
+            formControlName="emi">
+
+        </div>
+
+        <div class="input-group">
+
+          <label>
+            Outstanding Amount (₹)
+          </label>
+
+          <input
+            type="number"
+            formControlName="outstandingAmount">
+
+        </div>
+
+        <div class="input-group full-width">
+
+          <label>
+            Interest Rate (%)
+          </label>
+
+          <input
+            type="number"
+            formControlName="interestRate">
+
+        </div>
+
+      </div>
 
       <button
-        type="submit">
+        type="submit"
+        class="submit-btn">
 
-        Add Debt
+        + Add EMI
 
       </button>
 
@@ -76,9 +160,20 @@
 
   <div class="table-card">
 
-    <h2>
-      Active Loans
-    </h2>
+    <div class="section-header">
+
+      <div>
+        <h2>Active Loans</h2>
+        <p>
+          Manage and monitor your current EMIs.
+        </p>
+      </div>
+
+      <div class="loan-count">
+        {{ debts.length }} Loans
+      </div>
+
+    </div>
 
     <table>
 
@@ -86,25 +181,17 @@
 
         <tr>
 
-          <th>
-            Type
-          </th>
+          <th>Type</th>
 
-          <th>
-            Lender
-          </th>
+          <th>Lender</th>
 
-          <th>
-            EMI
-          </th>
+          <th>EMI (₹)</th>
 
-          <th>
-            Outstanding
-          </th>
+          <th>Outstanding (₹)</th>
 
-          <th>
-            Action
-          </th>
+          <th>Interest %</th>
+
+          <th>Action</th>
 
         </tr>
 
@@ -113,10 +200,7 @@
       <tbody>
 
         <tr
-          *ngFor="
-            let debt
-            of debts
-          ">
+          *ngFor="let debt of debts">
 
           <td>
             {{ debt.type }}
@@ -131,19 +215,18 @@
           </td>
 
           <td>
-            ₹{{
-              debt.outstandingAmount
-            }}
+            ₹{{ debt.outstandingAmount }}
+          </td>
+
+          <td>
+            {{ debt.interestRate }}%
           </td>
 
           <td>
 
             <button
-              (click)="
-                deleteDebt(
-                  debt._id!
-                )
-              ">
+              class="delete-btn"
+              (click)="deleteDebt(debt._id!)">
 
               Delete
 
@@ -156,6 +239,24 @@
       </tbody>
 
     </table>
+
+    <div
+      class="empty-state"
+      *ngIf="debts.length === 0">
+
+      <div class="empty-icon">
+        💳
+      </div>
+
+      <h3>
+        No Active Loans
+      </h3>
+
+      <p>
+        Add your first EMI and start tracking your debt portfolio.
+      </p>
+
+    </div>
 
   </div>
 

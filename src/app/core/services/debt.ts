@@ -10,7 +10,6 @@ export interface DebtInterface {
   emi: number;
   outstandingAmount: number;
   interestRate: number;
-
 }
 
 @Injectable({
