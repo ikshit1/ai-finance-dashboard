@@ -1,4 +1,4 @@
-<div class="dashboard-body">
+<div class="dashboard-body" *ngIf="!isAnalyticsLoading">
       <div class="cards-grid">
         <app-dashboard-card
             title="Total Savings"
@@ -28,4 +28,8 @@
       <div class="chart-section">
         <app-chart-widget></app-chart-widget>
       </div>
-    </div>
+</div>
+
+<div *ngIf="isAnalyticsLoading">
+  Loading Dashboard...
+</div>
