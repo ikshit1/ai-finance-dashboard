@@ -10,6 +10,8 @@ export interface AnalyticsInterface {
   monthlySavings:number;
   totalSavings:number;
   monthlyBudget:number;
+  totalMonthlyEmi:number;
+  activeLoans:number;
 }
 
 @Injectable({

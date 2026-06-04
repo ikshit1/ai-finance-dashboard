@@ -23,6 +23,18 @@
             [amount]="'₹' +(analytics.monthlySavings || 0)"
             icon="account_balance_wallet">
         </app-dashboard-card>
+
+        <app-dashboard-card
+            title="Total EMI"
+            [amount]="'₹' +(analytics.totalMonthlyEmi || 0)"
+            icon="account_balance_wallet">
+        </app-dashboard-card>
+
+        <app-dashboard-card
+            title="Active Loans"
+            [amount]="'₹' +(analytics.activeLoans || 0)"
+            icon="account_balance_wallet">
+        </app-dashboard-card>
       </div>
 
       <div class="chart-section">
