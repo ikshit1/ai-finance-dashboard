@@ -1,14 +1,37 @@
-import { Component, Input } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  Input
+} from '@angular/core';
+
+import {
+  MatIconModule
+} from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard-card',
-  imports: [MatIconModule],
+  imports: [
+    CommonModule,
+    MatIconModule
+  ],
   templateUrl: './dashboard-card.html',
-  styleUrl: './dashboard-card.scss',
+  styleUrl: './dashboard-card.scss'
 })
 export class DashboardCard {
-  @Input() title: string = '';
-  @Input() amount: string = '';
-  @Input() icon = '';
+
+  @Input()
+  title = '';
+
+  @Input()
+  amount = '';
+
+  @Input()
+  icon = '';
+
+  @Input()
+  status = '';
+
+  @Input()
+  cardType = '';
+
 }

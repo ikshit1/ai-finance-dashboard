@@ -4,14 +4,40 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+export interface CategoryBreakdown {
+
+  category: string;
+
+  amount: number;
+
+}
+
 export interface AnalyticsInterface {
-  income:number;
-  expense:number;
-  monthlySavings:number;
-  totalSavings:number;
-  monthlyBudget:number;
-  totalMonthlyEmi:number;
-  activeLoans:number;
+
+  income: number;
+
+  expense: number;
+
+  monthlySavings: number;
+
+  totalSavings: number;
+
+  monthlyBudget: number;
+
+  monthlySalary: number;
+
+  totalMonthlyEmi: number;
+
+  activeLoans: number;
+
+  totalOutstanding: number;
+
+  healthScore: number;
+
+  insights: string[];
+
+  categoryBreakdown: CategoryBreakdown[];
+
 }
 
 @Injectable({

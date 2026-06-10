@@ -1,12 +1,37 @@
-<div class="dashboard-card">
-  <div class="card-header">
-    <div>
-      <h3>{{ title }}</h3>
-      <p>{{ amount }}</p>
+<div
+  class="dashboard-card"
+  [ngClass]="cardType">
+
+  <div class="card-top">
+
+    <div class="card-icon">
+
+      <mat-icon>
+        {{ icon }}
+      </mat-icon>
+
     </div>
 
-    <div class="icon-container">
-      <mat-icon>{{ icon }}</mat-icon>
+    <div class="card-content">
+
+      <div class="card-title">
+        {{ title }}
+      </div>
+
+      <div class="card-value">
+        {{ amount }}
+      </div>
+
+      <div
+        *ngIf="status"
+        class="card-status">
+
+        {{ status }}
+
+      </div>
+
     </div>
+
   </div>
+
 </div>

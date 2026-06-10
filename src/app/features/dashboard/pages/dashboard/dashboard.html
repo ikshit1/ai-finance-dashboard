@@ -1,47 +1,184 @@
-<div class="dashboard-body" *ngIf="!isAnalyticsLoading">
-      <div class="cards-grid">
-        <app-dashboard-card
-            title="Total Savings"
-            [amount]="'₹' +(analytics.totalSavings || 0)"
-            icon="savings">
-        </app-dashboard-card>
+<div class="dashboard-body">
 
-        <app-dashboard-card
-            title="Income"
-            [amount]="'₹' +(analytics.income || 0)"
-            icon="payments">
-        </app-dashboard-card>
+  <!-- HEALTH HERO -->
 
-        <app-dashboard-card
-            title="Expenses"
-            [amount]="'₹' +(analytics.expense || 0)"
-            icon="trending_down">
-        </app-dashboard-card>
+  <div class="health-hero">
 
-        <app-dashboard-card
-            title="Monthly Savings"
-            [amount]="'₹' +(analytics.monthlySavings || 0)"
-            icon="account_balance_wallet">
-        </app-dashboard-card>
+    <div class="health-left">
 
-        <app-dashboard-card
-            title="Total EMI"
-            [amount]="'₹' +(analytics.totalMonthlyEmi || 0)"
-            icon="account_balance_wallet">
-        </app-dashboard-card>
+      <span class="hero-label">
 
-        <app-dashboard-card
-            title="Active Loans"
-            [amount]="'₹' +(analytics.activeLoans || 0)"
-            icon="account_balance_wallet">
-        </app-dashboard-card>
+        Financial Health
+
+      </span>
+
+      <h1>
+
+        {{ analytics?.healthScore }}/100
+
+      </h1>
+
+      <div
+        class="health-status"
+        [ngClass]="getHealthClass()">
+
+        {{ getHealthStatus() }}
+
       </div>
 
-      <div class="chart-section">
-        <app-chart-widget></app-chart-widget>
-      </div>
-</div>
+    </div>
 
-<div *ngIf="isAnalyticsLoading">
-  Loading Dashboard...
+    <div class="health-right">
+
+      <h3>
+
+        Primary Risk
+
+      </h3>
+
+      <p>
+
+        {{ getPrimaryRisk() }}
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- AI SUMMARY -->
+
+  <div class="summary-card">
+
+    <h2>
+
+      AI Summary
+
+    </h2>
+
+    <p>
+
+      {{ getAiSummary() }}
+
+    </p>
+
+  </div>
+
+  <!-- STRENGTHS / RISKS -->
+
+  <div class="analysis-grid">
+
+    <div class="strength-card">
+
+      <h2>🟢 Strengths</h2>
+
+      <ul>
+
+        <li>
+          Salary:
+          ₹{{ analytics?.monthlySalary }}
+        </li>
+
+        <li>
+          Budget:
+          Under Control
+        </li>
+
+        <li>
+          Emergency Fund:
+          Available
+        </li>
+
+      </ul>
+
+    </div>
+
+    <div class="risk-card">
+
+      <h2>🔴 Attention Needed</h2>
+
+      <ul>
+
+        <li>
+          Debt:
+          ₹{{ analytics?.totalOutstanding }}
+        </li>
+
+        <li>
+          EMI:
+          ₹{{ analytics?.totalMonthlyEmi }}
+        </li>
+
+        <li>
+          Savings:
+          ₹{{ analytics?.monthlySavings }}
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- METRICS -->
+
+  <div class="cards-grid">
+
+    <app-dashboard-card
+  cardType="card-savings"
+  title="Total Savings"
+  [amount]="'₹' + (analytics?.totalSavings || 0)"
+  icon="savings">
+</app-dashboard-card>
+
+<app-dashboard-card
+  cardType="card-income"
+  title="Income"
+  [amount]="'₹' + (analytics?.monthlySalary || 0)"
+  icon="payments">
+</app-dashboard-card>
+
+<app-dashboard-card
+  cardType="card-expense"
+  title="Expenses"
+  [amount]="'₹' + (analytics?.expense || 0)"
+  icon="trending_down">
+</app-dashboard-card>
+
+<app-dashboard-card
+  cardType="card-monthly-savings"
+  title="Monthly Savings"
+  [amount]="'₹' + (analytics?.monthlySavings || 0)"
+  icon="account_balance_wallet">
+</app-dashboard-card>
+
+<app-dashboard-card
+  cardType="card-emi"
+  title="Total EMI"
+  [amount]="'₹' + (analytics?.totalMonthlyEmi || 0)"
+  icon="credit_card">
+</app-dashboard-card>
+
+<app-dashboard-card
+  cardType="card-loans"
+  title="Active Loans"
+  [amount]="'' + (analytics?.activeLoans || 0)"
+  icon="account_balance">
+</app-dashboard-card>
+
+  </div>
+
+  <div class="chart-section">
+
+    <h2>
+
+      Spending Analytics
+
+    </h2>
+
+    <app-chart-widget>
+    </app-chart-widget>
+
+  </div>
+
 </div>
